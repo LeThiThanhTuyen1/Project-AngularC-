@@ -1,0 +1,14 @@
+<div class="cart_section">
+  <div class="container">
+    <div class="row">
+      <div *ngFor="let item of cart" class="col-lg-3 col-md-6">
+        <div class="cart_item">
+          <h3 class="item_name">{{ dishNames[item.DishID] }}</h3>
+          <p class="item_price">{{ item.Price }} VNĐ</p>
+          <p class="item_quantity">Số lượng: {{ item.Quantity }}</p>
+        </div>
+      </div>
+    </div>
+    <button (click)="checkout()">Thanh toán</button>
+  </div>
+</div>

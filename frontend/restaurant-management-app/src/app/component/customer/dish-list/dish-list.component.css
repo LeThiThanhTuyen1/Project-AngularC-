@@ -1,0 +1,29 @@
+/* styles.css hoặc dishes.component.css */
+.category-menu {
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 50px; /* Khoảng cách giữa danh mục và phần trên của trang */
+  }
+  
+  .category-item {
+    display: inline-block;
+    margin-right: 30px; /* Khoảng cách giữa các mục danh mục */
+    padding-bottom: 5px;
+    border-bottom: 2px solid transparent;
+    text-decoration: none;
+    color: #333; /* Màu chữ */
+    transition: border-color 0.3s ease; /* Hiệu ứng chuyển đổi màu đường kẻ */
+  }
+  
+  .category-item:hover {
+    border-color: #ff5733; /* Màu đường kẻ khi hover */
+  }
+  .category-item.selected {
+    color: #ff5733; /* Màu chữ khi được chọn */
+  }
+  .bt {
+    margin-right: 10px;
+  }
+  .bt-1 {
+    width: 100px;
+  }

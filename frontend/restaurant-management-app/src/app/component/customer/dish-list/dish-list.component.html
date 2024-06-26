@@ -1,0 +1,42 @@
+<div class="coffee_section layout_padding">
+  <div class="container">
+    <div class="row">
+      <h1 class="coffee_taital">THỰC ĐƠN CỦA CHÚNG TÔI</h1>
+      <div class="bulit_icon"><img src="assets/images/bulit-icon.png"></div>
+      <div class="category-menu">
+        <a href="#" 
+           class="category-item" 
+           *ngFor="let category of categories" 
+           [class.selected]="selectedCategoryId === category.CategoryID"
+           (click)="filterByCategory($event, category.CategoryID)">
+          {{ category.Name }} ({{ getCategoryCount(category.CategoryID) }})
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="coffee_section_2">  
+    <div class="container-fluid">
+      <div class="row">
+        <ng-container *ngIf="filteredDishes.length > 0; else noResults">
+          <div *ngFor="let dish of filteredDishes" class="col-lg-3 col-md-6">
+            <div class="coffee_img">
+              <img style="width: 300px; height: 200px;" src="{{dish.ImageURL}}">
+            </div>
+            <h3 class="types_text">{{ dish.Name }}</h3>
+            <p class="looking_text">{{ dish.Price }} VNĐ</p>
+            <div style="width: 300px; margin-left: 2px;" class="read_bt">
+              <a class="bt" (click)="addToCart(dish.DishID)">Thêm vào giỏ hàng</a>
+              <a class="bt-1" [routerLink]="['/dish-detail', dish.DishID]">Xem</a>
+            </div>
+            <br>
+          </div>
+        </ng-container>
+        <ng-template #noResults>
+          <div class="col-md-12">
+            <h3 class="types_text">Không tìm thấy theo từ khóa "{{ searchKeyword }}"</h3>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

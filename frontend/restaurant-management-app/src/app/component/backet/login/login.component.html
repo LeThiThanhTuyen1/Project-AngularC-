@@ -1,0 +1,45 @@
+<div class="container" id="container">
+    <div class="form-container sign-in-container">
+      <form #frm1='ngForm' (ngSubmit)="login()" novalidate>
+        <h1>Đăng nhập</h1>
+        <div>
+          <input type="text" 
+                 required
+                 name="username"
+                 #UserName="ngModel"
+                 [(ngModel)]="username"
+                 placeholder="Tên tài khoản" />
+          <div *ngIf="formSubmitted && UserName.errors?.['required']">
+            <p class="error-message">Tên đăng nhập không được để trống</p>
+          </div>
+        </div>
+        <div>
+          <input type="password" 
+                 required
+                 name="password"
+                 #Password="ngModel"
+                 [(ngModel)]="password"
+                 placeholder="Mật khẩu" />
+          <div *ngIf="formSubmitted && Password.errors?.['required']">
+            <p class="error-message">Mật khẩu không được để trống</p>
+          </div>
+        </div>
+        <div class="error-message" >
+            {{ message }}
+        </div>
+        <a href="#">Quên mật khẩu?</a>
+        <button type="submit">Đăng nhập</button>
+      </form>
+    </div>
+    <div class="overlay-container">
+      <div class="overlay">
+        <div class="overlay-panel overlay-right">
+          <h1>Xin chào, mừng bạn đến với Dung Mama' Kitchen!</h1>
+          <p>Nếu bạn chưa có tài khoản, hãy nhấn nút "Đăng ký" ở dưới.</p>
+          <button class="ghost">
+            <a routerLink="/register">Đăng ký</a>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>

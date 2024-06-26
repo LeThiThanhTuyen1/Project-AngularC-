@@ -1,0 +1,113 @@
+<div style="margin-bottom: 70px;" class="container mt-5">
+  <h1 class="mb-4">Danh sách Món Ăn</h1>
+  <button class="btn btn-primary mb-3" onclick="document.getElementById('id04').style.display='block'">Thêm Món Ăn</button>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Tên món ăn</th>
+        <th>Mô tả</th>
+        <th>Giá</th>
+        <th>Ảnh</th>
+        <th>ID danh mục</th>
+        <th style="width: 140px;">Thao tác</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let dish of dishes">
+        <td>{{ dish.DishID }}</td>
+        <td>{{ dish.Name }}</td>
+        <td>{{ dish.Description }}</td>
+        <td>{{ dish.Price }}</td>
+        <td><img src="{{dish.ImageURL}}" class="=img"> </td>
+        <td>{{ dish.CategoryID }}</td>
+        <td>
+          <button class="btn btn-warning mr-2" (click)="openEditModal(dish)">Sửa</button>
+          <button class="btn btn-danger" (click)="deleteDish(dish)">Xóa</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Add Dish Modal -->
+<div id="id04" class="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h5 class="modal-title">Thêm Món Ăn Mới</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="document.getElementById('id04').style.display='none'">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <!-- Modal Body -->
+      <div class="modal-body">
+        <form #form="ngForm" (ngSubmit)="addDish(form)">
+          <div class="mb-3">
+            <label for="Name" class="form-label">Tên Món Ăn</label>
+            <input type="text" class="form-control" id="Name" name="Name" [(ngModel)]="newDish.Name" required>
+          </div>
+          <div class="mb-3">
+            <label for="Description" class="form-label">Mô tả</label>
+            <textarea class="form-control" id="Description" name="Description" [(ngModel)]="newDish.Description" rows="3" required></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="Price" class="form-label">Giá</label>
+            <input type="number" class="form-control" id="Price" name="Price" [(ngModel)]="newDish.Price" required>
+          </div>
+          <div class="mb-3">
+            <label for="ImageURL" class="form-label">URL Ảnh</label>
+            <input type="text" class="form-control" id="ImageURL" name="ImageURL" [(ngModel)]="newDish.ImageURL" required>
+          </div>
+          <div class="mb-3">
+            <label for="CategoryID" class="form-label">ID Danh mục</label>
+            <input type="number" class="form-control" id="CategoryID" name="CategoryID" [(ngModel)]="newDish.CategoryID" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Lưu</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Dish Modal -->
+<div id="id03" class="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h5 class="modal-title">Sửa Món Ăn</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="document.getElementById('id03').style.display='none'">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <!-- Modal Body -->
+      <div class="modal-body">
+        <form #editForm="ngForm" (ngSubmit)="editDish(editForm)">
+          <div class="mb-3">
+            <label for="Name" class="form-label">Tên Món Ăn</label>
+            <input type="text" class="form-control" id="Name" name="Name" [(ngModel)]="selectedDish.Name" required>
+          </div>
+          <div class="mb-3">
+            <label for="Description" class="form-label">Mô tả</label>
+            <textarea class="form-control" id="Description" name="Description" [(ngModel)]="selectedDish.Description" rows="3" required></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="Price" class="form-label">Giá</label>
+            <input type="number" class="form-control" id="Price" name="Price" [(ngModel)]="selectedDish.Price" required>
+          </div>
+          <div class="mb-3">
+            <label for="ImageURL" class="form-label">URL Ảnh</label>
+            <input type="text" class="form-control" id="ImageURL" name="ImageURL" [(ngModel)]="selectedDish.ImageURL" required>
+          </div>
+          <div class="mb-3">
+            <label for="CategoryID" class="form-label">ID Danh mục</label>
+            <input type="number" class="form-control" id="CategoryID" name="CategoryID" [(ngModel)]="selectedDish.CategoryID" required>
+          </div>
+          <button type="submit" class="btn btn-warning mr-2">Lưu</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

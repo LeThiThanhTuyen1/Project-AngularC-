@@ -1,0 +1,83 @@
+<div style="margin-bottom: 70px;" class="container mt-5">
+  <h1 class="mb-4">Danh sách Danh mục</h1>
+  <button class="btn btn-primary mb-3" onclick="document.getElementById('id02').style.display='block'">Thêm Danh Mục</button>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Tên Danh Mục</th>
+        <th>Mô Tả</th>
+        <th style="width: 140px;">Thao tác</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let category of categories">
+        <td>{{ category.CategoryID }}</td>
+        <td>{{ category.Name }}</td>
+        <td>{{ category.Description }}</td>
+        <td>
+          <button class="btn btn-warning mr-2" (click)="openEditModal(category)">Sửa</button>
+          <button class="btn btn-danger" (click)="deleteCategory(category)">Xóa</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Add Modal -->
+<div id="id02" class="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h5 class="modal-title">Thêm Danh Mục Mới</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="document.getElementById('id02').style.display='none'">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <!-- Modal Body -->
+      <div class="modal-body">
+        <form #form="ngForm" (ngSubmit)="addCategory(form)">
+          <div class="mb-3">
+            <label for="Name" class="form-label">Tên Danh Mục</label>
+            <input type="text" class="form-control" id="Name" name="Name" [(ngModel)]="selectedCategory.Name" required>
+          </div>
+          <div class="mb-3">
+            <label for="Description" class="form-label">Mô tả</label>
+            <textarea class="form-control" id="Description" name="Description" [(ngModel)]="selectedCategory.Description" rows="3" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Lưu</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Modal -->
+<div id="id01" class="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h5 class="modal-title">Sửa Danh Mục</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="document.getElementById('id01').style.display='none'">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <!-- Modal Body -->
+      <div class="modal-body">
+        <form #editForm="ngForm" (ngSubmit)="editCategory(editForm)">
+          <div class="mb-3">
+            <label for="Name" class="form-label">Tên Danh Mục</label>
+            <input type="text" class="form-control" id="Name" name="Name" [(ngModel)]="selectedCategory.Name" required>
+          </div>
+          <div class="mb-3">
+            <label for="Description" class="form-label">Mô tả</label>
+            <textarea class="form-control" id="Description" name="Description" [(ngModel)]="selectedCategory.Description" rows="3" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-warning mr-2">Lưu</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

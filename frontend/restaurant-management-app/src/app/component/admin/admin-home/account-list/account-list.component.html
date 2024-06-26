@@ -1,0 +1,105 @@
+<div style="margin-bottom: 70px;" class="container mt-5">
+  <h1 class="mb-4">Danh sách Tài khoản</h1>
+  <button class="btn btn-primary mb-3" onclick="document.getElementById('id04').style.display='block'">Thêm Tài Khoản</button>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Tên tài khoản</th>
+        <th>Mật khẩu</th>
+        <th>Vai trò</th>
+        <th>Số điện thoại</th>
+        <th>Thao tác</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let account of accounts">
+        <td>{{ account.AccountID }}</td>
+        <td>{{ account.Username }}</td>
+        <td>{{ account.Password }}</td>
+        <td>{{ account.Role }}</td>
+        <td>{{ account.PhoneNumber }}</td>
+        <td>
+          <button class="btn btn-warning mr-2" (click)="openEditModal(account)">Sửa</button>
+          <button class="btn btn-danger" (click)="deleteAccount(account)">Xóa</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Add Account Modal -->
+<div id="id04" class="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h5 class="modal-title">Thêm Tài Khoản Mới</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="document.getElementById('id04').style.display='none'">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <!-- Modal Body -->
+      <div class="modal-body">
+        <form #form="ngForm" (ngSubmit)="addAccount(form)">
+          <div class="mb-3">
+            <label for="Username" class="form-label">Tên Tài Khoản</label>
+            <input type="text" class="form-control" id="Username" name="Username" [(ngModel)]="newAccount.Username" required>
+            <input type="text" class="form-control" id="Username" name="Username" [(ngModel)]="newAccount.Username" required>
+          </div>
+          <div class="mb-3">
+            <label for="Password" class="form-label">Mật khẩu</label>
+            <input type="password" class="form-control" id="Password" name="Password" [(ngModel)]="newAccount.Password" required>
+            <input type="password" class="form-control" id="Password" name="Password" [(ngModel)]="newAccount.Password" required>
+          </div>
+          <div class="mb-3">
+            <label for="Role" class="form-label">Vai trò</label>
+            <input type="text" class="form-control" id="Role" name="Role" [(ngModel)]="newAccount.Role" required>
+            <input type="text" class="form-control" id="Role" name="Role" [(ngModel)]="newAccount.Role" required>
+          </div>
+          <div class="mb-3">
+            <label for="PhoneNumber" class="form-label">Số điện thoại</label>
+            <input type="text" class="form-control" id="PhoneNumber" name="PhoneNumber" [(ngModel)]="newAccount.PhoneNumber" rows="3" required>
+          </div><button type="submit" class="btn btn-primary">Lưu</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Account Modal -->
+<div id="id03" class="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h5 class="modal-title">Sửa Tài Khoản</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="document.getElementById('id03').style.display='none'">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <!-- Modal Body -->
+      <div class="modal-body">
+        <form #editForm="ngForm" (ngSubmit)="editAccount(editForm)">
+          <div class="mb-3">
+            <label for="Username" class="form-label">Tên Tài Khoản</label>
+            <input type="text" class="form-control" id="Username" name="Username" [(ngModel)]="selectedAccount.Username" required>
+          </div>
+          <div class="mb-3">
+            <label for="Password" class="form-label">Mật khẩu</label>
+            <input type="password" class="form-control" id="Password" name="Password" [(ngModel)]="selectedAccount.Password" required>
+          </div>
+          <div class="mb-3">
+            <label for="Role" class="form-label">Vai trò</label>
+            <input type="text" class="form-control" id="Role" name="Role" [(ngModel)]="selectedAccount.Role" required>
+          </div>
+          <div class="mb-3">
+            <label for="PhoneNumber" class="form-label">Số điện thoại</label>
+          <input type="text" class="form-control" id="PhoneNumber" name="PhoneNumber" [(ngModel)]="selectedAccount.PhoneNumber" rows="3" required>
+          </div>
+          <button type="submit" class="btn btn-warning mr-2">Lưu</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

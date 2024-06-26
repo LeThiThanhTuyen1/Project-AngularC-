@@ -1,0 +1,59 @@
+<div class="container" id="container">
+    <div class="form-container sign-in-container">
+        <form (ngSubmit)="register()" novalidate>
+            <h1>Đăng Ký</h1>
+            <div>
+                <input type="text" 
+                       required
+                       name="Username"
+                       (keyup)="checkUserName()"
+                       [(ngModel)]="Username"
+                       placeholder="Tên tài khoản" />
+            </div>
+
+            <div>
+                <input type="password" 
+                       required
+                       name="Password"
+                       [(ngModel)]="Password"
+                       placeholder="Mật khẩu" />
+            </div>
+
+            <div>
+                <input type="password" 
+                       required
+                       name="confirmPassword"
+                       [(ngModel)]="confirmPassword"
+                       placeholder="Nhập lại mật khẩu" />
+            </div>
+
+            <div>
+                <input type="text" 
+                       required minlength="10" maxlength="10"
+                       name="PhoneNumber"
+                       [(ngModel)]="PhoneNumber"
+                       placeholder="Số điện thoại"/>
+                <div *ngIf="formSubmitted">
+                    <p class="error-message" *ngIf="PhoneNumber.length < 10 || PhoneNumber.length > 10">Số bao gồm 10 ký tự</p>
+                </div> 
+            </div>
+
+            <div *ngIf="message" class="error-message">
+                {{ message }}
+            </div><br>
+
+            <button type="submit">Đăng ký</button>
+        </form>
+    </div>
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-right">
+                <h1>Xin chào, mừng bạn đến với Dung Mama' Kitchen!</h1>
+                <p>Nếu bạn chưa có tài khoản, hãy nhấn nút "Đăng ký" ở dưới.</p>
+                <button class="ghost">
+                    <a routerLink="/login">Đăng nhập</a>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

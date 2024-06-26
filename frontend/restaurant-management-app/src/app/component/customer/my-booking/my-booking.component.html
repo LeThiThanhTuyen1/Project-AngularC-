@@ -1,0 +1,30 @@
+  <div style="margin-bottom: 70px;" class="container mt-5">
+      <h1 class="mb-4">Danh sách Đặt bàn của bạn</h1>
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>ID Đặt bàn</th>
+            <th>Tên người đặt</th>
+            <th>Số người</th>
+            <th>Số điện thoại</th>
+            <th>Đặt ngày</th>
+            <th>Thời gian đặt</th>
+            <th style="width: 140px;">Thao tác</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let booking of bookings">
+            <td>{{ booking.BookingID }}</td>
+            <td>{{ booking.CustomerName }}</td>
+            <td>{{ booking.NumberOfPeople }}</td>
+            <td>{{ booking.Phone }}</td>
+            <td>{{ booking.BookingDate | date:'dd/MM/yyyy'}}</td>
+            <td>{{ booking.BookingTime }}</td>
+            <td>
+              <button class="btn btn-danger" (click)="cancelBooking(booking.BookingID)">Hủy Đặt bàn</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    

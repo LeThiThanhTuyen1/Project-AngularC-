@@ -1,0 +1,74 @@
+<!-- header section start -->
+<div class="header_section">
+  <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" routerLink="/home"><img style="width: 60px;" src="assets/images/logo.png"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li *ngIf="role !== 'Admin'" class="nav-item active">
+            <div class="search-box">
+              <input type="text" class="search-input" placeholder="Tìm kiếm..." [(ngModel)]="searchKeyword">
+              <button (click)="onSearch()" class="search-button">
+                <i class="fa fa-search search-icon" aria-hidden="true"></i>
+              </button>
+            </div>
+          </li>
+          <!-- Admin -->
+          <li class="nav-item" *ngIf="role === 'Admin'">
+            <a class="nav-link" routerLink="/admin/home">Admin Home</a>
+          </li>
+          <li class="nav-item" *ngIf="role === 'Admin'">
+            <a class="nav-link" routerLink="/categories">Danh mục</a>
+          </li>
+          <li class="nav-item" *ngIf="role === 'Admin'">
+            <a class="nav-link" routerLink="/table-booking-admin">Danh sách đặt</a>
+          </li>
+          <li class="nav-item" *ngIf="role === 'Admin'">
+            <a class="nav-link" routerLink="/admin/dishes">Món Ăn</a>
+          </li>
+          <li class="nav-item" *ngIf="role === 'Admin'">
+            <a class="nav-link" routerLink="/accounts">Tài khoản</a>
+          </li>
+          <!-- User -->
+          <li class="nav-item" *ngIf="role !== 'Admin'">
+            <a class="nav-link" routerLink="/home">Trang chủ</a>
+          </li>
+          <li class="nav-item" *ngIf="role !== 'Admin'">
+            <a class="nav-link" routerLink="/dishes">Thực đơn</a>
+          </li>
+          <li class="nav-item" *ngIf="role !== 'Admin'">
+            <a class="nav-link" routerLink="/table-booking">Đặt bàn</a>
+          </li>
+          <li class="nav-item" *ngIf="role === 'Customer'">
+            <a class="nav-link" routerLink="/mybooking">Danh sách đặt</a>
+          </li>
+          <li class="nav-item" *ngIf="role === 'Customer'">
+            <a class="nav-link" routerLink="/mycart">Giỏ hàng</a>
+          </li>
+          <li class="nav-item" *ngIf="role !== 'Admin'">
+            <a class="nav-link" routerLink="/about-us">Giới thiệu</a>
+          </li>
+          <li class="nav-item" *ngIf="role !== 'Admin'">
+            <a class="nav-link" routerLink="/contact">Liên hệ</a>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <div class="login_bt">
+            <ul>
+              <li *ngIf="!isLoggedIn">
+                <a routerLink="/login"><span class="user_icon"><i class="fa fa-user" aria-hidden="true"></i></span>Đăng nhập</a>
+              </li>
+              <li *ngIf="isLoggedIn">
+                <a (click)="logout()"><span class="user_icon"><i class="fa fa-user" aria-hidden="true"></i></span>Đăng xuất</a>
+              </li>
+            </ul>
+          </div>
+        </form>
+      </div>
+    </nav>
+  </div>
+</div>
+<!-- header section end -->

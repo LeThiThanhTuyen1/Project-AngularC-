@@ -1,0 +1,36 @@
+.form-container {
+  background-color: #fff;
+  padding: 40px; /* Tăng padding */
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin:  50px;
+  width: 50%; /* Tăng kích thước chiều rộng */
+}
+
+img {
+  width: 100%;
+}
+.form-group {
+  width: 80%;
+}
+.form-group label {
+  width: 70%;
+  font-size: 16px; /* Tăng kích thước font chữ */
+}
+
+.form-control {
+  border: 1px solid #d9534f; /* Màu viền hồng đất */
+  font-size: 16px; /* Tăng kích thước font chữ */
+  padding: 10px; /* Tăng padding */
+}
+
+.btn-primary {
+  margin-top: 30px!important;
+  background-color: #d9534f;
+  border: none;
+  font-size: 18px; /* Tăng kích thước font chữ */
+  padding: 10px;
+  width: 30%;
+  margin: auto;
+  text-align: center;
+}

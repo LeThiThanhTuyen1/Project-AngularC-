@@ -1,0 +1,32 @@
+<img src="https://static.wixstatic.com/media/3712cc_00a82c9fa6844aee940b389ecda23c14~mv2.png/v1/fill/w_980,h_210,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/3712cc_00a82c9fa6844aee940b389ecda23c14~mv2.png">
+<div class="container d-flex justify-content-center">
+  <div class="form-container">
+      <form (ngSubmit)="onSubmit()">
+          <div class="form-group">
+              <label for="customerName">Tên khách hàng:</label>
+              <input type="text" id="customerName" name="customerName" class="form-control" [(ngModel)]="booking.CustomerName" required>
+          </div>
+          <div class="form-group">
+              <label for="phoneNumber">Số điện thoại:</label>
+              <input type="tel" id="phoneNumber" name="phoneNumber" class="form-control" [(ngModel)]="booking.Phone"required>
+          </div>
+          <div class="form-group">
+              <label for="numberOfPeople">Số người:</label>
+              <input type="number" id="numberOfPeople" name="numberOfPeople" class="form-control" [(ngModel)]="booking.NumberOfPeople" required>
+          </div>
+          <div class="form-group">
+              <label for="bookingDate">Ngày đặt:</label>
+              <input type="date" id="bookingDate" name="bookingDate" class="form-control" [(ngModel)]="booking.BookingDate" required>
+          </div>
+          <div class="form-group">
+              <label for="bookingTime">Thời gian đặt:</label>
+              <input type="time" id="bookingTime" name="bookingTime" class="form-control"  [(ngModel)]="booking.BookingTime" required>
+          </div>
+          <div class="form-group">
+              <label for="note">Ghi chú:</label>
+              <input type="text" id="note" name="note" class="form-control form-control-lg" [(ngModel)]="booking.Notes" required>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Đặt</button>
+      </form>
+  </div>
+</div>

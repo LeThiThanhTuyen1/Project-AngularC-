@@ -1,0 +1,122 @@
+<div style="margin-bottom: 70px;" class="container mt-5">
+    <h1 class="mb-4">Danh sách Đặt bàn</h1>
+    <button class="btn btn-primary mb-3" onclick="document.getElementById('addModal').style.display='block'">Thêm Đặt bàn</button>
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Tên Khách hàng</th>
+          <th>Số người</th>
+          <th>Ngày đặt bàn</th>
+          <th>Giờ đặt bàn</th>
+          <th>Ghi chú</th>
+          <th style="width: 140px;">Thao tác</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let booking of bookings">
+          <td>{{ booking.BookingID }}</td>
+          <td>{{ booking.CustomerName }}</td>
+          <td>{{ booking.NumberOfPeople }}</td>
+          <td>{{ booking.BookingDate | date:'dd/MM/yyyy' }}</td>
+          <td>{{ booking.BookingTime }}</td>
+          <td>{{ booking.Notes }}</td>
+          <td>
+            <button class="btn btn-warning mr-2" (click)="openEditModal(booking)">Sửa</button>
+            <button class="btn btn-danger" (click)="deleteBooking(booking)">Xóa</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <!-- Add Modal -->
+  <div id="addModal" class="modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h5 class="modal-title">Thêm Đặt bàn Mới</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeModal('addModal')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <!-- Modal Body -->
+        <div class="modal-body">
+          <form #addForm="ngForm" (ngSubmit)="addBooking(addForm)">
+            <div class="mb-3">
+              <label for="CustomerName" class="form-label">Tên Khách hàng</label>
+              <input type="text" class="form-control" id="CustomerName" name="CustomerName" [(ngModel)]="selectedBooking.CustomerName" required>
+            </div>
+            <div class="mb-3">
+              <label for="NumberOfPeople" class="form-label">Số người</label>
+              <input type="number" class="form-control" id="NumberOfPeople" name="NumberOfPeople" [(ngModel)]="selectedBooking.NumberOfPeople" required>
+            </div>
+            <div class="mb-3">
+                <label for="BookingDate" class="form-label">Số điện thoại</label>
+                <input type="text" class="form-control" id="Phone" name="Phone" [(ngModel)]="selectedBooking.Phone" required>
+              </div>
+            <div class="mb-3">
+              <label for="BookingDate" class="form-label">Ngày đặt bàn</label>
+              <input type="date" class="form-control" id="BookingDate" name="BookingDate" placeholder="00:00" [(ngModel)]="selectedBooking.BookingDate" required>
+            </div>
+            <div class="mb-3">
+              <label for="BookingTime" class="form-label">Giờ đặt bàn</label>
+              <input type="text" class="form-control" id="BookingTime" name="BookingTime" placeholder="00:00" [(ngModel)]="selectedBooking.BookingTime" required>
+            </div>
+            <div class="mb-3">
+              <label for="Notes" class="form-label">Ghi chú</label>
+              <textarea class="form-control" id="Notes" name="Notes" [(ngModel)]="selectedBooking.Notes" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Lưu</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Edit Modal -->
+  <div id="editModal" class="modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h5 class="modal-title">Sửa Đặt bàn</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeModal('editModal')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <!-- Modal Body -->
+        <div class="modal-body">
+          <form #editForm="ngForm" (ngSubmit)="editBooking(editForm)">
+            <div class="mb-3">
+              <label for="CustomerName" class="form-label">Tên Khách hàng</label>
+              <input type="text" class="form-control" id="CustomerName" name="CustomerName" [(ngModel)]="selectedBooking.CustomerName" required>
+            </div>
+            <div class="mb-3">
+              <label for="NumberOfPeople" class="form-label">Số người</label>
+              <input type="number" class="form-control" id="NumberOfPeople" name="NumberOfPeople" [(ngModel)]="selectedBooking.NumberOfPeople" required>
+            </div>
+            <div class="mb-3">
+                <label for="NumberOfPeople" class="form-label">Số diện thoại</label>
+                <input type="text" class="form-control" id="Phone" name="Phone" [(ngModel)]="selectedBooking.Phone" required>
+              </div>
+            <div class="mb-3">
+              <label for="BookingDate" class="form-label">Ngày đặt bàn</label>
+              <input type="date" class="form-control" id="BookingDate" name="BookingDate" [(ngModel)]="selectedBooking.BookingDate" required>
+            </div>
+            <div class="mb-3">
+              <label for="BookingTime" class="form-label">Giờ đặt bàn</label>
+              <input type="text" class="form-control" id="BookingTime" name="BookingTime" [(ngModel)]="selectedBooking.BookingTime" required>
+            </div>
+            <div class="mb-3">
+              <label for="Notes" class="form-label">Ghi chú</label>
+              <textarea class="form-control" id="Notes" name="Notes" [(ngModel)]="selectedBooking.Notes" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-warning mr-2">Lưu</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  

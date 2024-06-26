@@ -1,0 +1,12 @@
+<div *ngIf="dish" class="dish-detail-container">
+    <div class="dish-detail">
+      <img [src]="dish.ImageURL" alt="{{ dish.Name }}">
+    </div>
+    <div class="dish-detail-content">
+      <h2>{{ dish.Name }}</h2>
+      <p>{{ dish.Description }}</p>
+      <p class="price">Giá: {{ dish.Price }} VNĐ</p>
+      <p class="category">Danh mục: {{ categoryName }}</p>
+      <a class="back-button" [routerLink]="['/dishes']">Quay lại thực đơn</a>
+    </div>
+</div>

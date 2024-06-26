@@ -1,0 +1,39 @@
+<!-- contact section start -->
+<div style="margin-bottom: 50px!important;" class="contact_section layout_padding">
+   <div class="container">
+      <div class="row">
+         <div class="col-sm-12">
+            <h1 class="contact_taital">GỬI TIN NHẮN CHO CHÚNG TÔI</h1>
+            <div class="bulit_icon"><img src="assets/images/bulit-icon.png"></div>
+         </div>
+      </div>
+   </div>
+   <div class="container-fluid">
+      <div class="contact_section_2">
+         <div class="row">
+            <div class="col-md-12">
+               <div class="mail_section_1">
+                 <form (ngSubmit)="submitContact()" novalidate>
+                    <input type="text" class="mail_text" placeholder="Tên của bạn" name="Name" required [(ngModel)]="cont.Name">
+                    <input type="email" class="mail_text" placeholder="Email" name="Email" required [(ngModel)]="cont.Email">
+                    <input type="text" class="mail_text" placeholder="Số điện thoại" name="Phone" required [(ngModel)]="cont.Phone" minlength="10" maxlength="10">
+                    <textarea class="massage-bt" placeholder="Nhập tin nhắn...." rows="5" id="comment" name="Message" required [(ngModel)]="cont.Message"></textarea>
+                    
+                    <div *ngIf="message" class="error-message">
+                       {{ message }}
+                   </div><br>
+
+                   <div class="send_bt"><button style="padding: 10px; background-color: indianred; color: white ;border: solid 1px; width: 100px; border-radius: 10px; margin-top: 10px;" type="submit">Gửi</button></div>
+                 </form>
+                </div>
+            </div>
+            <!-- <div class="map_main">
+               <div class="map-responsive">
+                  <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&amp;q=Eiffel+Tower+Paris+France" width="250" height="500" frameborder="0" style="border:0; width: 100%;" allowfullscreen=""></iframe>
+               </div>
+            </div> -->
+         </div>
+      </div>
+   </div>
+</div>
+<!-- contact section end -->
