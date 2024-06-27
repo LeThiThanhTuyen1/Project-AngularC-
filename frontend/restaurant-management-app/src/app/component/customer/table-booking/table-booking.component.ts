@@ -3,6 +3,7 @@ import { TableBooking } from '../../../models/table-booking.model';
 import { TableBookingService } from '../../../services/table-booking.service';
 import { AuthService } from '../../../services/auth.service';
 import { checkBookingValidity } from '../../../check/check.table.booking';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-table-booking',
   templateUrl: './table-booking.component.html',
@@ -22,7 +23,8 @@ export class TableBookingComponent implements OnInit {
 
   constructor(
     private bookingService: TableBookingService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -39,6 +41,7 @@ export class TableBookingComponent implements OnInit {
     if( checkBookingValidity(bookingData)) {
       this.bookingService.createTableBooking(bookingData).subscribe(response => {
         console.log('Đặt bàn thành công:', response);
+        this.router.navigate(['mybooking']);
         alert('Đặt bàn thành công.')
       }, error => {
         console.error('Đặt bàn thất bại:', error);
