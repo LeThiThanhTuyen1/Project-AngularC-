@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\project-angular\\backend\\RestaurantManagementAPI\\RestaurantManagementAPI\\RestaurantManagementAPI.csproj": {}
+    "E:\\Project-AngularC-\\backend\\RestaurantManagementAPI\\RestaurantManagementAPI\\RestaurantManagementAPI.csproj": {}
   },
   "projects": {
-    "E:\\project-angular\\backend\\RestaurantManagementAPI\\RestaurantManagementAPI\\RestaurantManagementAPI.csproj": {
+    "E:\\Project-AngularC-\\backend\\RestaurantManagementAPI\\RestaurantManagementAPI\\RestaurantManagementAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\project-angular\\backend\\RestaurantManagementAPI\\RestaurantManagementAPI\\RestaurantManagementAPI.csproj",
+        "projectUniqueName": "E:\\Project-AngularC-\\backend\\RestaurantManagementAPI\\RestaurantManagementAPI\\RestaurantManagementAPI.csproj",
         "projectName": "RestaurantManagementAPI",
-        "projectPath": "E:\\project-angular\\backend\\RestaurantManagementAPI\\RestaurantManagementAPI\\RestaurantManagementAPI.csproj",
+        "projectPath": "E:\\Project-AngularC-\\backend\\RestaurantManagementAPI\\RestaurantManagementAPI\\RestaurantManagementAPI.csproj",
         "packagesPath": "C:\\Users\\FPT\\.nuget\\packages\\",
-        "outputPath": "E:\\project-angular\\backend\\RestaurantManagementAPI\\RestaurantManagementAPI\\obj\\",
+        "outputPath": "E:\\Project-AngularC-\\backend\\RestaurantManagementAPI\\RestaurantManagementAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

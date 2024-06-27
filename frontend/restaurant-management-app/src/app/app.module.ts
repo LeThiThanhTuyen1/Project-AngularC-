@@ -43,6 +43,7 @@ import { CartComponent } from './component/cart/cart.component';
 import { DishListComponent } from './component/customer/dish-list/dish-list.component';
 import { OrderService } from './services/order.service';
 import { AuthService } from './services/auth.service';
+import { PaymentComponent } from './component/customer/payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { AuthService } from './services/auth.service';
     TableBookingComponent,
     TableBookingAdminComponent,
     CartComponent,
+    PaymentComponent,
   ],
   imports: [
     BrowserModule,

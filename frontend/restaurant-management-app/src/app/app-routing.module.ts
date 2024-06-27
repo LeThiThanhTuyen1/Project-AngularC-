@@ -16,6 +16,7 @@ import { TableBookingComponent } from './component/customer/table-booking/table-
 import { AuthGuard } from './guard/auth.guard';
 import { TableBookingAdminComponent } from './component/admin/admin-home/table-booking-admin/table-booking-admin.component';
 import { CartComponent } from './component/cart/cart.component';
+import { PaymentComponent } from './component/customer/payment/payment.component';
 
 const routes: Routes = [
   { path: 'accounts', component: AccountListComponent },
@@ -30,6 +31,7 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent},
   { path: 'admin/dishes', component: AdminDishesComponent},
   { path: 'mybooking', component: MyBookingComponent},
+  { path: 'payment', component: PaymentComponent},
   { path: 'table-booking', component: TableBookingComponent, canActivate: [AuthGuard]},
   { path: 'table-booking-admin', component: TableBookingAdminComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' },

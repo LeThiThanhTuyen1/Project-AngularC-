@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "a+cxaslqy68=",
+  "dgSpecHash": "c79oyACoke4=",
   "success": true,
-  "projectFilePath": "E:\\project-angular\\backend\\RestaurantManagementAPI\\RestaurantManagementAPI\\RestaurantManagementAPI.csproj",
+  "projectFilePath": "E:\\Project-AngularC-\\backend\\RestaurantManagementAPI\\RestaurantManagementAPI\\RestaurantManagementAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\FPT\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\FPT\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

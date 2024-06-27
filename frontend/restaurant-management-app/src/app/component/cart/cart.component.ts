@@ -4,6 +4,7 @@ import { DishService } from '../../services/dish.service';
 import { Cart } from '../../models/cart.model';
 import { AuthService } from '../../services/auth.service';
 import { ChangeDetectorRef } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -19,6 +20,7 @@ export class CartComponent implements OnInit {
     private cartService: CartService,
     private dishService: DishService,
     private authService: AuthService,
+    private router: Router,
     private cdRef: ChangeDetectorRef // Inject ChangeDetectorRef
   ){}
 
@@ -30,8 +32,9 @@ export class CartComponent implements OnInit {
 
   checkout() {
     // Handle checkout
-    alert('Thanh toán thành công!');
-    this.cartService.clearCart();
+    //alert('Thanh toán thành công!');
+    //this.cartService.clearCart();
+    this.router.navigate(['/payment']);
   }
 
   getCartsByAccountId() {

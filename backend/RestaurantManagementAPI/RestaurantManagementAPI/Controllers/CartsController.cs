@@ -42,6 +42,32 @@ namespace RestaurantManagementAPI.Controllers
             return cart;
         }
 
+        [HttpGet("total/{accountId}")]
+        public async Task<ActionResult<decimal>> GetTotalAmount(int accountId)
+        {
+            var totalAmount = await _context.Carts
+                .Where(c => c.AccountID == accountId)
+                .SumAsync(c => c.Price * c.Quantity);
+
+            return Ok(totalAmount);
+        }
+
+        [HttpDelete("clear/{accountId}")]
+        public async Task<IActionResult> ClearCart(int accountId)
+        {
+            var cartItems = _context.Carts.Where(c => c.AccountID == accountId);
+
+            if (!cartItems.Any())
+            {
+                return NotFound("No cart items found for the given account ID.");
+            }
+
+            _context.Carts.RemoveRange(cartItems);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
         // PUT: api/Carts/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]

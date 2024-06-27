@@ -24,10 +24,6 @@ export class CartService {
     return this.http.post<any>(this.apiUrl, cartData, { headers });
   }  
 
-  getTableBookingsByAccountId(accountId: number): Observable<Cart[]> {
-    return this.http.get<Cart[]>(`${this.apiUrl}/byaccount/${accountId}`);
-  }
-
   getCartsByAccountId(accountId: number): Observable<Cart[]> {
     return this.http.get<Cart[]>(`${this.apiUrl}/byaccount/${accountId}`);
   }
@@ -36,9 +32,11 @@ export class CartService {
     return this.itemsSubject.asObservable();
   }
 
-  clearCart() {
-    this.items = [];
-    this.itemsSubject.next(this.items);
+  clearCart(accountId: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/clear/${accountId}`);
   }
   
+  getTotalAmount(accountId: number): Observable<number> {
+    return this.http.get<number>(`${this.apiUrl}/total/${accountId}`);
+  }
 }

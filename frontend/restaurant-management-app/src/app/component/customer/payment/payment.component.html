@@ -1,0 +1,29 @@
+<form (ngSubmit)="onSubmit(paymentForm)" #paymentForm="ngForm">
+    <div>
+      <label for="customerName">Tên người nhận</label>
+      <input type="text" id="customerName" name="customerName" ngModel required>
+    </div>
+  
+    <div>
+      <label for="address">Địa chỉ</label>
+      <input type="text" id="address" name="address" ngModel required>
+    </div>
+  
+    <div>
+      <label for="paymentDate">Ngày thanh toán</label>
+      <input type="date" id="paymentDate" name="paymentDate" [(ngModel)]="paymentDate" disabled>
+    </div>
+  
+    <div>
+      <label for="amount">Thành tiền</label>
+      <input type="number" id="amount" name="amount" [(ngModel)]="totalAmount" disabled>
+    </div>
+  
+    <div>
+      <label for="paymentMethod">Phương thức thanh toán</label>
+      <input type="text" id="paymentMethod" name="paymentMethod" [(ngModel)]="paymentMethod" disabled>
+    </div>
+  
+    <button type="submit">Thanh toán</button>
+</form>
+  

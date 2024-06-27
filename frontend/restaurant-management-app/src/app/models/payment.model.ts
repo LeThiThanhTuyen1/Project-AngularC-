@@ -1,6 +1,8 @@
 export interface Payment {
     PaymentID: number;
-    OrderID: number;
+    CustomerID: number;
+    CustomerName: string;
+    Address: string;
     PaymentDate: Date;
     Amount: number;
     PaymentMethod: string;
