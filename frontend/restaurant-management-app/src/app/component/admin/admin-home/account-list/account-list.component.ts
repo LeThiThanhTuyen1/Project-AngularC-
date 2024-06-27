@@ -11,14 +11,12 @@ import { NgForm } from '@angular/forms';
 })
 export class AccountListComponent implements OnInit {
   accounts: Account[] = [];
-  selectedAccount: Account = { AccountID: 0, Username: '', Password: '', Role: '', PhoneNumber: ''};
   newAccount: Account = { AccountID: 0, Username: '', Password: '', Role: '', PhoneNumber: ''};
   
   constructor(public accountService: AccountService) { }
 
   ngOnInit(): void {
     this.getAccounts();
-    this.getAccount(2);
   }
 
   getAccounts(): void {
@@ -28,16 +26,6 @@ export class AccountListComponent implements OnInit {
         this.accounts = accounts;
       }, error => {
         console.error('Error fetching accounts:', error);
-      });
-  }
-
-  getAccount(id: number): void {
-    this.accountService.getAccountById(id)
-      .subscribe(account => {
-        console.log(account); // Log dữ liệu ra console
-        this.selectedAccount = account;
-      }, error => {
-        console.error('Error fetching account:', error);
       });
   }
   loadAccounts() {
@@ -70,22 +58,6 @@ export class AccountListComponent implements OnInit {
     }
   }
   
-
-  openEditModal(account: Account) {
-    this.selectedAccount = { ...account }; 
-    (document.getElementById('id03')!).style.display = 'block'; 
-  }
-
-  editAccount(form: NgForm) {
-    if (form.valid) {
-    this.accountService.updateAccount(this.selectedAccount.AccountID,this.selectedAccount).subscribe(updatedAccount => {
-        console.log('Account updated:', updatedAccount);
-       (document.getElementById('id03')!).style.display = 'none'; // Close modal after successful update
-       alert('Sửa thành công.');
-        this.loadAccounts();
-      });
-    }
-   }
 
   deleteAccount(account: any) {
     const confirmed = window.confirm(`Bạn có chắc chắn muốn xóa '${account.Username}' không?`);
