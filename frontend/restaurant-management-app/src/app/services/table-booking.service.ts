@@ -16,10 +16,6 @@ export class TableBookingService {
     return this.http.get<TableBooking[]>(this.apiUrl);
   }
 
-  getMyTableBookings(): Observable<TableBooking[]> {
-    return this.http.get<TableBooking[]>(`${this.apiUrl}/mybookings`);
-  }
-
   getTableBookingById(id: number): Observable<TableBooking> {
     return this.http.get<TableBooking>(`${this.apiUrl}/${id}`);
   }

@@ -42,26 +42,4 @@ export class DishService {
     return this.http.get<Dish[]>(`${this.apiUrl}/dishes/search?keyword=${keyword}`);
   }
 
-  getDishesByCategory(categoryId: number): Observable<Dish[]> {
-    return this.http.get<Dish[]>(`${this.apiUrl}/dishes/category/${categoryId}`);
-  }
-  
-  getDishWithCategory(id: number): Observable<Dish> {
-    return this.getDishById(id).pipe(
-      switchMap((dish: Dish) => this.categoryService.getCategoryById(dish.CategoryID).pipe(
-        map((category: Category) => {
-          // Assign the category to the Dish object
-          return { ...dish, Category: category }; // Spread operator to keep other properties unchanged
-        }),
-        catchError(error => {
-          console.error('Error fetching category:', error);
-          throw error;
-        })
-      )),
-      catchError(error => {
-        console.error('Error fetching dish:', error);
-        throw error;
-      })
-    );
-  }
 }

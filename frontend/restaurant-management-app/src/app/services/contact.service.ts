@@ -12,23 +12,7 @@ export class ContactService {
 
   constructor(private http: HttpClient) { }
 
-  getAllContacts(): Observable<Contact[]> {
-    return this.http.get<Contact[]>(this.apiUrl);
-  }
-
-  getContactById(id: number): Observable<Contact> {
-    return this.http.get<Contact>(`${this.apiUrl}/${id}`);
-  }
-
   createContact(contact: Contact): Observable<Contact> {
     return this.http.post<Contact>(this.apiUrl, contact);
-  }
-
-  updateContact(id: number, contact: Contact): Observable<Contact> {
-    return this.http.put<Contact>(`${this.apiUrl}/${id}`, contact);
-  }
-
-  deleteContact(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }

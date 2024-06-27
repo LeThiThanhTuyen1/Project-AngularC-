@@ -23,14 +23,9 @@ export class CartService {
   
     return this.http.post<any>(this.apiUrl, cartData, { headers });
   }  
-
   
   getCartsByAccountId(accountId: number): Observable<Cart[]> {
     return this.http.get<Cart[]>(`${this.apiUrl}/byaccount/${accountId}`);
-  }
-
-  getItems() {
-    return this.itemsSubject.asObservable();
   }
 
   updateCartItemQuantity(cartId: number, quantity: number): Observable<void> {
