@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { CartService } from '../../services/cart.service';
-import { DishService } from '../../services/dish.service';
-import { Cart } from '../../models/cart.model';
-import { AuthService } from '../../services/auth.service';
+import { CartService } from '../../../services/cart.service';
+import { DishService } from '../../../services/dish.service';
+import { Cart } from '../../../models/cart.model';
+import { AuthService } from '../../../services/auth.service';
 import { ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 

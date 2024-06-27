@@ -1,0 +1,24 @@
+<div class="cart_section">
+  <h1>Giỏ hàng</h1>
+  <div class="container">
+    <table class="cart_table">
+      <thead>
+        <tr>
+          <th>STT</th>
+          <th>Tên món</th>
+          <th>Giá</th>
+          <th>Số lượng</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of cart; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ dishNames[item.DishID] }}</td>
+          <td>{{ item.Price }} VNĐ</td>
+          <td>{{ item.Quantity }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <button (click)="checkout()" class="checkout_button">Thanh toán</button>
+  </div>
+</div>

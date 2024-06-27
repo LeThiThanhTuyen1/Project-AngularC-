@@ -78,8 +78,23 @@ namespace RestaurantManagementAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<Payment>> PostPayment(Payment payment)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             _context.Payments.Add(payment);
-            await _context.SaveChangesAsync();
+            
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                // Log the exception (use your logging framework)
+                Console.WriteLine("Error saving payment: " + ex.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error saving payment to the database.");
+            }
 
             return CreatedAtAction("GetPayment", new { id = payment.PaymentID }, payment);
         }

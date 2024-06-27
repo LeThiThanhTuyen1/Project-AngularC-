@@ -68,6 +68,37 @@ namespace RestaurantManagementAPI.Controllers
             return NoContent();
         }
 
+        [HttpPut("update-quantity/{id}")]
+        public async Task<IActionResult> UpdateCartItemQuantity(int id, [FromBody] int quantity)
+        {
+            var cart = await _context.Carts.FindAsync(id);
+
+            if (cart == null)
+            {
+                return NotFound();
+            }
+
+            cart.Quantity = quantity;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!CartExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+        
         // PUT: api/Carts/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
@@ -98,7 +129,7 @@ namespace RestaurantManagementAPI.Controllers
 
             return NoContent();
         }
-
+        
         [HttpPost]
         public async Task<ActionResult<Cart>> PostCart(Cart cart)
         {

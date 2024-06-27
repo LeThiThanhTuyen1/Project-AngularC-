@@ -15,7 +15,7 @@ import { MyBookingComponent } from './component/customer/my-booking/my-booking.c
 import { TableBookingComponent } from './component/customer/table-booking/table-booking.component';
 import { AuthGuard } from './guard/auth.guard';
 import { TableBookingAdminComponent } from './component/admin/admin-home/table-booking-admin/table-booking-admin.component';
-import { CartComponent } from './component/cart/cart.component';
+import { CartComponent } from './component/customer/cart/cart.component';
 import { PaymentComponent } from './component/customer/payment/payment.component';
 
 const routes: Routes = [

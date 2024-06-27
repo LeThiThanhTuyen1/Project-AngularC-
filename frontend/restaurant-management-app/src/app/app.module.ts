@@ -39,11 +39,11 @@ import { TableBookingService } from './services/table-booking.service';
 import { MyBookingComponent } from './component/customer/my-booking/my-booking.component';
 import { TableBookingComponent } from './component/customer/table-booking/table-booking.component';
 import { TableBookingAdminComponent } from './component/admin/admin-home/table-booking-admin/table-booking-admin.component';
-import { CartComponent } from './component/cart/cart.component';
+import { CartComponent } from './component/customer/cart/cart.component';
 import { DishListComponent } from './component/customer/dish-list/dish-list.component';
-import { OrderService } from './services/order.service';
 import { AuthService } from './services/auth.service';
 import { PaymentComponent } from './component/customer/payment/payment.component';
+import { PaymentService } from './services/payment.service';
 
 @NgModule({
   declarations: [
@@ -91,8 +91,8 @@ import { PaymentComponent } from './component/customer/payment/payment.component
     CategoryService,
     DishService, 
     TableBookingService,
-    OrderService,
     AuthService,
+    PaymentService,
     provideAnimationsAsync()
   ],
   bootstrap: [AppComponent]

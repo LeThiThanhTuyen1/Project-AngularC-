@@ -1,5 +1,5 @@
 export interface Payment {
-    PaymentID: number;
+    PaymentID?: number;
     CustomerID: number;
     CustomerName: string;
     Address: string;

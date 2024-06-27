@@ -3,6 +3,7 @@ import { CartService } from '../../../services/cart.service';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
+import { PaymentService } from '../../../services/payment.service';
 
 @Component({
   selector: 'app-payment',
@@ -18,6 +19,7 @@ export class PaymentComponent implements OnInit {
   constructor(
     private cartService: CartService,
     private authService: AuthService,
+    private paymentService: PaymentService,
     private router: Router
   ) { }
 
@@ -39,28 +41,35 @@ export class PaymentComponent implements OnInit {
   onSubmit(paymentForm: NgForm) {
     if (paymentForm.valid) {
       const paymentDetails = {
-        PaymentID: 0,
         CustomerID: this.accountId,
         CustomerName: paymentForm.value.customerName,
         Address: paymentForm.value.address,
         PaymentDate: new Date(this.paymentDate),
         Amount: this.totalAmount,
         PaymentMethod: this.paymentMethod
+        
+        
       };
-
-      // Xử lý logic thanh toán tại đây (có thể gọi API để lưu thông tin thanh toán)
-      console.log('Thanh toán thành công', paymentDetails);
-      alert('Thanh toán thành công');
-
-      this.cartService.clearCart(this.accountId).subscribe(
-        () => {
-          console.log('Giỏ hàng đã được làm trống');
-          this.router.navigate(['/mycart']); // Chuyển hướng về trang giỏ hàng
-        },
-        (error) => console.error('Error clearing cart', error)
+      this.paymentService.postPayment(paymentDetails).subscribe(
+        response => {
+          console.log('Payment successful:', response);
+          console.log('Thanh toán thành công', paymentDetails);
+        alert('Thanh toán thành công');
+    
+        this.cartService.clearCart(this.accountId).subscribe(
+          () => {
+            console.log('Giỏ hàng đã được làm trống');
+            this.router.navigate(['/mycart']); // Chuyển hướng về trang giỏ hàng
+          },
+          (error) => console.error('Error clearing cart', error)
+        )},
+          error => {
+            console.error('Error processing payment:', error);
+            alert('Lỗi thanh toán.');
+          }
       );
     } else {
       alert('Vui lòng điền đầy đủ thông tin');
     }
   }
-}
+}  
