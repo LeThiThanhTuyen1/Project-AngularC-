@@ -9,6 +9,7 @@
             <th>Số điện thoại</th>
             <th>Đặt ngày</th>
             <th>Thời gian đặt</th>
+            <th>Ghi chú</th>
             <th style="width: 140px;">Thao tác</th>
           </tr>
         </thead>
@@ -20,6 +21,7 @@
             <td>{{ booking.Phone }}</td>
             <td>{{ booking.BookingDate | date:'dd/MM/yyyy'}}</td>
             <td>{{ booking.BookingTime }}</td>
+            <td>{{ booking.Notes }}</td>
             <td>
               <button class="btn btn-danger" (click)="cancelBooking(booking.BookingID)">Hủy Đặt bàn</button>
             </td>

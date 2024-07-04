@@ -16,7 +16,6 @@
 
     ngOnInit(): void {
       this.userId = this.authService.getUserId();
-      console.log('Current userId:', this.userId);
       this.getBookingsByAccountId(); // Fetch bookings for the current userId
     }
 

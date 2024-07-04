@@ -107,7 +107,6 @@ export class DishListComponent implements OnInit {
       );
     } else {
       alert('Bạn cần phải đăng nhập để thêm vào giỏ hàng.');
-      this.authService.logout();
     }
   }
      

@@ -98,7 +98,7 @@ namespace RestaurantManagementAPI.Controllers
 
             return NoContent();
         }
-        
+
         // PUT: api/Carts/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
@@ -165,7 +165,7 @@ namespace RestaurantManagementAPI.Controllers
         }
 
         [HttpGet("byaccount/{accountId}")]
-        public async Task<ActionResult<IEnumerable<Cart>>> GetTableBookingsByAccountId(int accountId)
+        public async Task<ActionResult<IEnumerable<Cart>>> GetCartsByAccountId(int accountId)
         {
             var carts = await _context.Carts
                 .Where(tb => tb.AccountID == accountId)

@@ -35,7 +35,9 @@ export class TableBookingAdminComponent implements OnInit {
     today.setHours(0, 0, 0, 0); // Set to the start of the day
     this.futureBookings = this.bookings.filter(booking => {
       const bookingDate = new Date(booking.BookingDate);
-      return bookingDate >= today;
+      return bookingDate.getFullYear() === today.getFullYear() &&
+             bookingDate.getMonth() === today.getMonth() &&
+             bookingDate.getDate() === today.getDate();
     });
   }
 }

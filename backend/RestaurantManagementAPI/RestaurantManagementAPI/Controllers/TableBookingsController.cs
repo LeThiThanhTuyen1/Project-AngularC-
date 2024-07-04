@@ -59,6 +59,16 @@ namespace RestaurantManagementAPI.Controllers
 
             return tableBookings;
         }
+        // In your ASP.NET Core controller
+        [HttpGet("countbydate")]
+        public async Task<ActionResult<int>> GetBookingsCountForDateAsync([FromQuery] DateTime bookingDate)
+        {
+            var bookingsCount = await _context.TableBookings
+                                            .Where(b => b.BookingDate.Date == bookingDate.Date)
+                                            .CountAsync();
+
+            return Ok(bookingsCount);
+        }
 
         // PUT: api/TableBookings/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
