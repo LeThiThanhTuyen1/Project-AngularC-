@@ -1,8 +1,8 @@
-Description
-Nest framework TypeScript starter repository.
+## Description
+framework TypeScript starter repository.
 
-Installation
+## Installation
 $ npm install
-Running the app
-# development
+# Running the app
+#development
 $ ng serve
