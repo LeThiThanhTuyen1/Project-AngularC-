@@ -13,6 +13,8 @@ git clone https://github.com/LeThiThanhTuyen1/Project-AngularC-
 ```
 Backend
 ```bash
+cd backend/RestaurantManagementAPI/RestaurantManagementAPI
+
 # Install Entity Framework Core
 $ dotnet add package Microsoft.EntityFrameworkCore
 $ dotnet add package Microsoft.EntityFrameworkCore.SqlServer
@@ -23,6 +25,8 @@ $ dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
 ```
 Frontend
 ```bash
+cd frontend/restaurant-management-app
+
 # install 
 $ npm install -g @angular/cli
 
