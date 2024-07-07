@@ -8,6 +8,7 @@
           <th>Tên món</th>
           <th>Giá</th>
           <th>Số lượng</th>
+          <th>Thao tác</th>
         </tr>
       </thead>
       <tbody>
@@ -16,6 +17,7 @@
           <td>{{ dishNames[item.DishID] }}</td>
           <td>{{ item.Price }} VNĐ</td>
           <td>{{ item.Quantity }}</td>
+          <td><button class="btn btn-danger" (click)="deleteCartItem(item.CartID)">Hủy</button></td> 
         </tr>
       </tbody>
     </table>

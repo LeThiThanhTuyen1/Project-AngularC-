@@ -39,4 +39,8 @@ export class CartService {
   getTotalAmount(accountId: number): Observable<number> {
     return this.http.get<number>(`${this.apiUrl}/total/${accountId}`);
   }
+  
+  deleteCartItem(cartId: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${cartId}`);
+  } 
 }

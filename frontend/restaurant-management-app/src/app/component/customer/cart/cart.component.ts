@@ -50,6 +50,21 @@
       );
     }
 
+    deleteCartItem(cartId: number): void {
+      if (confirm('Bạn có chắc chắn muốn hủy món này khỏi giỏ hàng không?')) {
+        this.cartService.deleteCartItem(cartId).subscribe(
+          () => {
+            console.log(cartId);
+            console.log('Item deleted successfully');
+            this.getCartsByAccountId();
+          },
+          error => {
+            console.error('Error deleting cart item:', error);
+          }
+        );
+      }
+    }    
+
     getDishName(dishId: number): void {
       this.dishService.getDishNameById(dishId).subscribe(
         name => {
